@@ -3,14 +3,20 @@
 // 82 -> 10
 // 9012 -> 12
 
-double DigitsSum(int number)
+double DigitsSum(double number)
 {
     int i = 1;
     double result = 0;
     int CurrentDigit = 0;
-    number = Math.Abs(number);
+    number = Math.Abs(number); // вдруг какая то зараза "-" поставила?
 
-    if (number != Convert.ToInt32(number)) return -1;
+    //Если число не целое, мы его уцеляем :)
+    while (number % 10 != Convert.ToInt32 (number % 10)) 
+    {
+        number = number * 10;
+       // Console.WriteLine(number + "ещё дробное");
+    }
+
     while (number >= 1)
     {
         CurrentDigit = Convert.ToInt16(number % 10);
@@ -21,16 +27,18 @@ double DigitsSum(int number)
     return result;
 }
 
-int MyNym;
+double MyNym;
 double Res;
 Console.WriteLine("Программа считает сумму цифр в числе");
-Console.Write("Введите целое число:");
-while (!int.TryParse(Console.ReadLine(), out MyNym))
+Console.Write("Введите число:");
+
+while (!double.TryParse(Console.ReadLine(), out MyNym))
 {
-    Console.WriteLine("Ввод неверный. Пожалуйста, введите целое число");
+   Console.WriteLine("Ввод неверный. Пожалуйста, введите число");
 }
+
 Res = DigitsSum(MyNym);
-if(Res<0)
-    Console.WriteLine("Что-то пошло не так... ");    
-else 
+if (Res < 0)                                         
+    Console.WriteLine("Что-то пошло не так... "); // Осталось со времен когда в методе стояла роверка на целое
+else
     Console.WriteLine("Ответ:" + Res);

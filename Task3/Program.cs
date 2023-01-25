@@ -5,44 +5,38 @@
 // 6, 1, 33 -> [6, 1, 33]
 
 
-
-int [,]  ArrayInOut(int[] arr, string ArrayInOut)
+void ArrayInOut(int[] arr, string ArrayInOut) // работает и на ввод и на вывод в зависимости от араметра  ArrayInOut
 {
     int i = 0;
-    while(i<=arr.Length)
+    while (i < arr.Length)
     {
-        if (ArrayInOut == "in")
+        if (ArrayInOut == "edit")
         {
-            Console.Write("Введите " + i + "-й элемент массива");
+            Console.Write("Введите " + i + "-й элемент массива: ");
             while (!Int32.TryParse(Console.ReadLine(), out arr[i]))
             {
                 Console.WriteLine("Ввод неверный. Пожалуйста, введите корректное число");
             }
         }
-        else        
+        else
         {
-            Console.Write (arr[i] + " ");
+            Console.Write(arr[i] + " ");
 
         }
-
+        i++;
     }
-if (ArrayInOut=="in") return arr; 
-
 }
 
-
-int[] arr = new int[2];
-
-int i = 0;
-while (i <= 1)
+int n;
+Console.Write("Введите размерность массива: ");
+while (!Int32.TryParse(Console.ReadLine(), out n) || n < 0)
 {
-    Console.Write("Введите координату x для точки " + DotName[i] + ":");
-    while (!Int32.TryParse(Console.ReadLine(), out x[i]))
-    {
-        Console.WriteLine("Ввод неверный. Пожалуйста, введите корректное число");
-    }
-
-    
-    i++;
+    Console.WriteLine("Ввод неверный. Пожалуйста, введите корректное число");
 }
-Console.WriteLine("Расстояние между точками равно:" + Dist3D(x[0],y[0],z[0],x[1],y[1],z[1]).ToString("#.##"));
+
+int[] Array = new int[n];
+
+ArrayInOut(Array, "edit");
+Console.WriteLine("Вот ваш массив:  ");
+ArrayInOut(Array, "print");
+
