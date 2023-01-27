@@ -14,7 +14,7 @@ double DigitsSum(double number)
     while (number % 10 != Convert.ToInt32 (number % 10)) 
     {
         number = number * 10;
-       // Console.WriteLine(number + "ещё дробное");
+       Console.WriteLine(number + " ещё дробное");
     }
 
     while (number >= 1)
